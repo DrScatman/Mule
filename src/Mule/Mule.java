@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.NavigableMap;
 import java.util.TreeMap;
 
-@ScriptMeta(developer = "SirScript", desc = "Mule", name = "SS Mule", version = 0.1)
+@ScriptMeta(developer = "DrScatman", desc = "Mule", name = "SS Mule", version = 0.1)
 
 public class Mule extends Script implements ChatMessageListener, RenderListener {
     public static final org.rspeer.runetek.api.movement.position.Position Mulepos = new Position(3181, 3512);
