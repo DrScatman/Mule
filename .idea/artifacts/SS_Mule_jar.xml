@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="SS_Mule:jar">
+    <output-path>$USER_HOME$/Documents/RSPeer/scripts</output-path>
+    <root id="archive" name="SS_Mule.jar">
+      <element id="module-output" name="SS_Mule" />
+    </root>
+  </artifact>
+</component>

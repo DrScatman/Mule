@@ -33,7 +33,7 @@ import java.util.TreeMap;
 @ScriptMeta(developer = "SirScript", desc = "Mule", name = "SS Mule", version = 0.1)
 
 public class Mule extends Script implements ChatMessageListener, RenderListener {
-    public static final org.rspeer.runetek.api.movement.position.Position Mulepos = new Position(3165, 3487);
+    public static final org.rspeer.runetek.api.movement.position.Position Mulepos = new Position(3181, 3512);
     public String name;
     public int Gold;
     public int Gold2;
@@ -42,7 +42,7 @@ public class Mule extends Script implements ChatMessageListener, RenderListener 
     public String status1 = "mule";
     String user;
     private GUI Gui;
-    private boolean startScript;
+    public static boolean startScript;
     public static String Username;
     public static String Password;
 
@@ -74,8 +74,7 @@ public class Mule extends Script implements ChatMessageListener, RenderListener 
         }
 
         removeBlockingEvent(LoginScreen.class);
-        Gui = new GUI(this);
-        Gui.setVisible(true);
+        Gui = new GUI();
 
     }
 
@@ -87,10 +86,10 @@ public class Mule extends Script implements ChatMessageListener, RenderListener 
 
 
     public int loop() {
-
-        Username = Gui.Username;
-        Password = Gui.Password;
         if(startScript) {
+            Username = Gui.getUser();
+            Password = Gui.getPass();
+
             inRead();
             if (status != null) {
                 status = status.trim();
@@ -232,7 +231,9 @@ public class Mule extends Script implements ChatMessageListener, RenderListener 
     public void notify(RenderEvent renderEvent) {
         Graphics g = renderEvent.getSource();
         g.drawString("status =  " + status, 300, 330);
-        g.drawString("Gold Received " + format(gold3), 300, 350);
+        g.drawString("Gp Received: " + format(gold3), 300, 350);
+        g.drawString("Total Gp: " + format(Gold), 300, 370);
+
     }
 
     public void setStartScript(boolean startScript) {
