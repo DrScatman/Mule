@@ -11,6 +11,7 @@ import org.rspeer.runetek.api.component.Trade;
 import org.rspeer.runetek.api.component.tab.Inventory;
 import org.rspeer.runetek.api.input.Keyboard;
 import org.rspeer.runetek.api.movement.Movement;
+import org.rspeer.runetek.api.movement.position.Area;
 import org.rspeer.runetek.api.movement.position.Position;
 import org.rspeer.runetek.api.scene.Players;
 import org.rspeer.runetek.event.listeners.ChatMessageListener;
@@ -33,18 +34,17 @@ import java.util.TreeMap;
 @ScriptMeta(developer = "DrScatman", desc = "Mule", name = "SS Mule", version = 0.1)
 
 public class Mule extends Script implements ChatMessageListener, RenderListener {
-    public static final org.rspeer.runetek.api.movement.position.Position Mulepos = new Position(3181, 3512);
-    public String name;
+
     public int Gold;
     public int Gold2;
     public int gold3;
     public String status;
-    public String status1 = "mule";
     String user;
     private GUI Gui;
     public static boolean startScript;
     public static String Username;
     public static String Password;
+    public static Area muleArea;
 
 
 
@@ -89,6 +89,7 @@ public class Mule extends Script implements ChatMessageListener, RenderListener 
         if(startScript) {
             Username = Gui.getUser();
             Password = Gui.getPass();
+            muleArea = Gui.getMuleArea().getMuleArea();
 
             inRead();
             if (status != null) {
@@ -98,8 +99,8 @@ public class Mule extends Script implements ChatMessageListener, RenderListener 
                 Dialog.processContinue();
                 Time.sleep(1000);
             }
-            if (Mulepos.distance() > 2) {
-                Movement.setWalkFlag(Mulepos);
+            if (!muleArea.contains(Players.getLocal())) {
+                Movement.setWalkFlag(muleArea.getTiles().get(randInt(0, muleArea.getTiles().size() -1)));
             }
 
             if (Inventory.getFirst(995) != null) {
@@ -257,7 +258,11 @@ public class Mule extends Script implements ChatMessageListener, RenderListener 
         }
     }
 
-
+    public static int randInt(int min, int max) {
+        java.util.Random rand = new java.util.Random();
+        int randomNum = rand.nextInt(max - min + 1) + min;
+        return randomNum;
+    }
 
 }
 
