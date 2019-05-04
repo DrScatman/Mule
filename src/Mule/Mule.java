@@ -45,6 +45,7 @@ public class Mule extends Script implements ChatMessageListener, RenderListener 
     public static String Username;
     public static String Password;
     public static Area muleArea;
+    private boolean startGoldSet = false;
 
 
 
@@ -75,7 +76,6 @@ public class Mule extends Script implements ChatMessageListener, RenderListener 
 
         removeBlockingEvent(LoginScreen.class);
         Gui = new GUI();
-
     }
 
     public void onStop() {
@@ -105,9 +105,13 @@ public class Mule extends Script implements ChatMessageListener, RenderListener 
 
             if (Inventory.getFirst(995) != null) {
                 Gold = Inventory.getFirst(995).getStackSize();
+                if(!startGoldSet){
+                    Gold2 = Inventory.getFirst(995).getStackSize();
+                    startGoldSet = true;
+                }
             }
 
-            gold3 = Gold2 - Gold;
+            gold3 = Gold - Gold2;
 
 
             if (status.contains("mule")) {
