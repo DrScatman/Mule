@@ -25,11 +25,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Mule/Mule.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="501">
-              <caret line="108" column="67" selection-start-line="108" selection-start-column="67" selection-end-line="108" selection-end-column="67" />
+            <state relative-caret-position="461">
+              <caret line="208" column="92" selection-start-line="208" selection-start-column="92" selection-end-line="208" selection-end-column="92" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#8413#8414#0" expanded="true" />
+                <element signature="e#8511#8512#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -38,7 +38,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mule/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="764">
+            <state relative-caret-position="841">
               <caret line="70" column="50" selection-start-line="70" selection-start-column="50" selection-end-line="70" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -80,10 +80,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="506" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -176,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1556911452667</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fixed Rendering">
+      <created>1556936948272</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1556936948272</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -217,7 +223,8 @@
     </ignored-roots>
     <MESSAGE value="Working Mule" />
     <MESSAGE value="Location Select" />
-    <option name="LAST_COMMIT_MESSAGE" value="Location Select" />
+    <MESSAGE value="Fixed Rendering" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Rendering" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Mule/MuleThread.java" />
@@ -231,7 +238,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Mule/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="764">
+        <state relative-caret-position="841">
           <caret line="70" column="50" selection-start-line="70" selection-start-column="50" selection-end-line="70" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -241,11 +248,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Mule/Mule.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="108" column="67" selection-start-line="108" selection-start-column="67" selection-end-line="108" selection-end-column="67" />
+        <state relative-caret-position="461">
+          <caret line="208" column="92" selection-start-line="208" selection-start-column="92" selection-end-line="208" selection-end-column="92" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#8413#8414#0" expanded="true" />
+            <element signature="e#8511#8512#0" expanded="true" />
           </folding>
         </state>
       </provider>

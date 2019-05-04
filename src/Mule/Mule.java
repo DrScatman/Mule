@@ -53,7 +53,7 @@ public class Mule extends Script implements ChatMessageListener, RenderListener 
     public void onStart() {
 
         try {
-            File file = new File("mule.txt");
+            File file = new File("C:" + File.separator + "Mule"+ File.separator + "mule.txt");
 
             if (!file.exists()) {
                 file.createNewFile();
@@ -206,7 +206,7 @@ public class Mule extends Script implements ChatMessageListener, RenderListener 
 
         private void inRead() {
         try {
-            File file = new File("mule.txt");
+            File file = new File("C:" + File.separator + "Mule"+ File.separator + "mule.txt");
 
             if(!file.exists()) {
                 file.createNewFile();
