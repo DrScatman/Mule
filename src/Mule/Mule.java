@@ -66,7 +66,7 @@ public class Mule extends Script implements ChatMessageListener, RenderListener 
             BufferedReader br = new BufferedReader(fr);
 
             while (((status = br.readLine())) != null) {
-                Log.info(status);
+                Log.info(status + ":\t" + format(Gold));
             }
 
             br.close();
