@@ -114,7 +114,7 @@ public class Mule extends Script implements ChatMessageListener, RenderListener 
             gold3 = Gold - Gold2;
 
 
-            if (status.contains("mule")) {
+            if (status.contains("mule") && muleArea.contains(Players.getLocal())) {
                 if (!Game.isLoggedIn() && Username != null && Password != null) {
                     Login.enterCredentials(Username, Password);
                     Keyboard.pressEnter();
@@ -254,7 +254,7 @@ public class Mule extends Script implements ChatMessageListener, RenderListener 
         }
         ChatMessageType type = Chatevent.getType();
 
-        if (type.equals(ChatMessageType.TRADE)) {
+        if (type.equals(ChatMessageType.TRADE) && muleArea.contains(Players.getLocal())) {
             user = Chatevent.getSource();
             // Do stuff
             Log.info(user + " is Trading");
