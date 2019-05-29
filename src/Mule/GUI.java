@@ -52,7 +52,9 @@ public class GUI {
         frame.setLocationRelativeTo(Game.getCanvas());
         frame.pack();
 
-        frame.setVisible(true);
+        // Auto GUI
+        startBtnHandler();
+        //frame.setVisible(true);
     }
 
     private void startBtnHandler() {
