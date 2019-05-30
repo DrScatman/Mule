@@ -53,8 +53,8 @@ public class GUI {
         frame.pack();
 
         // Auto GUI
+        frame.setVisible(false);
         startBtnHandler();
-        //frame.setVisible(true);
     }
 
     private void startBtnHandler() {
