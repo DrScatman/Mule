@@ -42,14 +42,14 @@ public class Mule extends Script implements ChatMessageListener, RenderListener 
     public static String Password;
     public static Area muleArea;
     private boolean startGoldSet = false;
-
+    private static final String MULE_FILE_PATH = Script.getDataDirectory() + "\\mule.txt";
 
 
     @Override
     public void onStart() {
 
         try {
-            File file = new File("C:" + File.separator + "Mule"+ File.separator + "mule.txt");
+            File file = new File(MULE_FILE_PATH);
 
             if (!file.exists()) {
                 file.createNewFile();
@@ -202,7 +202,7 @@ public class Mule extends Script implements ChatMessageListener, RenderListener 
 
         private void inRead() {
         try {
-            File file = new File("C:" + File.separator + "Mule"+ File.separator + "mule.txt");
+            File file = new File(MULE_FILE_PATH);
 
             if(!file.exists()) {
                 file.createNewFile();
