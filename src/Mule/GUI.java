@@ -34,7 +34,7 @@ public class GUI {
         mulePos = new JComboBox(MuleArea.values());
         startBtn = new JButton("Start");
 
-        userN.setText("milleja1@mail.gvsu.edu");
+        userN.setText("mj682435@gmail.com");
         pass.setText("Xb32y0x5");
         mulePos.setSelectedIndex(0);
 

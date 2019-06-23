@@ -1,7 +1,5 @@
 package Mule;
 
-import org.rspeer.runetek.adapter.component.InterfaceComponent;
-import org.rspeer.runetek.adapter.component.Item;
 import org.rspeer.runetek.api.Game;
 import org.rspeer.runetek.api.Login;
 import org.rspeer.runetek.api.commons.Time;
@@ -12,10 +10,8 @@ import org.rspeer.runetek.api.component.tab.Inventory;
 import org.rspeer.runetek.api.input.Keyboard;
 import org.rspeer.runetek.api.movement.Movement;
 import org.rspeer.runetek.api.movement.position.Area;
-import org.rspeer.runetek.api.movement.position.Position;
 import org.rspeer.runetek.api.scene.Players;
 import org.rspeer.runetek.event.listeners.ChatMessageListener;
-import org.rspeer.runetek.event.listeners.LoginResponseListener;
 import org.rspeer.runetek.event.listeners.RenderListener;
 import org.rspeer.runetek.event.types.*;
 import org.rspeer.script.Script;
