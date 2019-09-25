@@ -10,7 +10,9 @@ public class GUI {
 
     private String username;
     private String password;
+    private int muleWorld;
     private MuleArea muleArea;
+
     private JLabel mLabel;
     private JLabel m2Label;
     private JTextField userN;
@@ -18,10 +20,13 @@ public class GUI {
     private JButton startBtn;
     private JLabel posLabel;
     private JComboBox mulePos;
+    private JTextField mWorld;
 
     private JFrame frame;
+    private Mule main;
 
-    public GUI(){
+    public GUI(Mule main){
+        this.main = main;
         frame = new JFrame("SS Mule");
         frame.setLayout(new MigLayout());
         frame.setPreferredSize(new Dimension(300, 500));
@@ -30,12 +35,14 @@ public class GUI {
         m2Label = new JLabel("Mules Login Password:");
         userN   = new JTextField();
         pass = new JTextField();
+        mWorld = new JTextField();
         posLabel = new JLabel("Select Mule Area:");
         mulePos = new JComboBox(MuleArea.values());
         startBtn = new JButton("Start");
 
-        userN.setText("mj682435@gmail.com");
+        userN.setText("jac70243@gmail.com");
         pass.setText("Xb32y0x5");
+        mWorld.setText("393");
         mulePos.setSelectedIndex(0);
 
         frame.add(mLabel, "wrap, growx");
@@ -60,15 +67,18 @@ public class GUI {
     private void startBtnHandler() {
         username = userN.getText();
         password = pass.getText();
+        muleWorld = Integer.parseInt(mWorld.getText());
         muleArea = (MuleArea) mulePos.getSelectedItem();
-        Mule.startScript = true;
+        main.setStartScript();
 
         frame.setVisible(false);
     }
 
-    public String getUser(){return username;}
+    String getUsername(){return username;}
 
-    public String getPass(){return password;}
+    String getPassword(){return password;}
 
-    public MuleArea getMuleArea(){return muleArea;}
+    int getMuleWorld(){return muleWorld; }
+
+    MuleArea getMuleArea(){return muleArea;}
 }

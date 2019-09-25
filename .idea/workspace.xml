@@ -6,7 +6,13 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="394ccb17-7962-4774-999d-374aa665ddcf" name="Default Changelist" comment="" />
+    <list default="true" id="394ccb17-7962-4774-999d-374aa665ddcf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/data/CheckInstances.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mule/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mule/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mule/Mule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mule/Mule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/MuleArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/MuleArea.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Mule/Mule.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+            <state relative-caret-position="281">
+              <caret line="92" column="11" selection-start-line="92" selection-start-column="8" selection-end-line="92" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -31,14 +37,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mule/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="820">
-              <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
+            <state relative-caret-position="740">
+              <caret line="41" selection-start-line="41" selection-end-line="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/data/CheckInstances.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -47,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/src/data/MuleArea.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="100">
-              <caret line="5" column="58" selection-start-line="5" selection-start-column="58" selection-end-line="5" selection-end-column="58" />
+              <caret line="5" column="56" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -64,6 +79,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>suffixes</find>
+      <find>301</find>
+      <find>rem</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -74,15 +91,19 @@
       <list>
         <option value="$PROJECT_DIR$/src/Mule/MuleThread.java" />
         <option value="$PROJECT_DIR$/src/Mule/GUI.jfd" />
-        <option value="$PROJECT_DIR$/src/Mule/Mule.java" />
+        <option value="$PROJECT_DIR$/src/automation/Download.java" />
+        <option value="$PROJECT_DIR$/src/data/InstanceCheck.java" />
+        <option value="$PROJECT_DIR$/src/automation/Management.java" />
+        <option value="$PROJECT_DIR$/src/automation/data/LaunchedClient.java" />
+        <option value="$PROJECT_DIR$/src/data/CheckInstances.java" />
         <option value="$PROJECT_DIR$/src/data/MuleArea.java" />
         <option value="$PROJECT_DIR$/src/Mule/GUI.java" />
+        <option value="$PROJECT_DIR$/src/Mule/Mule.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-25" />
-    <option name="y" value="10" />
+    <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -92,6 +113,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -121,7 +143,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -132,6 +153,14 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="data" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\bllit\IdeaProjects\SS_Mule\src" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -226,14 +255,21 @@
       <option name="project" value="LOCAL" />
       <updated>1561308088996</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Moved mule file">
+      <created>1561320726747</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1561320726747</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-25" y="10" width="974" height="1047" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29321662" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.01652452" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -250,7 +286,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32936078" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.327853" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3261105" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -273,22 +309,25 @@
     <MESSAGE value="Fixed luring" />
     <MESSAGE value="Fixed luring &amp;&amp; No GUI" />
     <MESSAGE value="New mule" />
-    <option name="LAST_COMMIT_MESSAGE" value="New mule" />
+    <MESSAGE value="Moved mule file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved mule file" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Mule/MuleThread.java" />
     <entry file="file://$PROJECT_DIR$/src/Mule/GUI.jfd" />
-    <entry file="file://$PROJECT_DIR$/src/data/MuleArea.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="58" selection-start-line="5" selection-start-column="58" selection-end-line="5" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/automation/data/Launcher.java" />
+    <entry file="file://$PROJECT_DIR$/src/data/InstanceCheck.java" />
+    <entry file="file://$PROJECT_DIR$/src/automation/data/QuickLaunch.java" />
+    <entry file="file://$PROJECT_DIR$/src/automation/AutomationFileHelper.java" />
+    <entry file="file://$PROJECT_DIR$/src/automation/data/UserInfo.java" />
+    <entry file="file://$PROJECT_DIR$/src/automation/Management.java" />
+    <entry file="file://$PROJECT_DIR$/src/automation/Authentication.java" />
+    <entry file="file://$PROJECT_DIR$/src/automation/data/LaunchedClient.java" />
+    <entry file="file://$PROJECT_DIR$/src/automation/Download.java" />
     <entry file="file://$PROJECT_DIR$/src/Mule/Mule.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+        <state relative-caret-position="281">
+          <caret line="92" column="11" selection-start-line="92" selection-start-column="8" selection-end-line="92" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -297,11 +336,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Mule/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="820">
-          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
+        <state relative-caret-position="740">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/CheckInstances.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/MuleArea.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="56" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
         </state>
       </provider>
     </entry>
