@@ -1,5 +1,11 @@
 package Mule;
 
+import api.bot_management.BotManagement;
+import api.bot_management.data.LaunchedClient;
+import api.bot_management.data.QuickLaunch;
+import data.MuleArea;
+import org.rspeer.QuickStartArgs;
+import org.rspeer.RSPeer;
 import org.rspeer.runetek.adapter.component.InterfaceComponent;
 import org.rspeer.runetek.api.Game;
 import org.rspeer.runetek.api.Login;
@@ -27,6 +33,7 @@ import java.io.*;
 
 import java.awt.*;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.NavigableMap;
 import java.util.TreeMap;
@@ -39,31 +46,31 @@ import static org.rspeer.runetek.event.types.LoginResponseEvent.Response.*;
 
 public class Mule extends Script implements ChatMessageListener, RenderListener, LoginResponseListener {
 
+    public static final String API_KEY = "JV5ML4DE4M9W8Z5KBE00322RDVNDGGMTMU1EH9226YCVGFUBE6J6OY1Q2NJ0RA8YAPKO70";
+    private static final String USERNAME = "jac70243@gmail.com";
+    private static final String PASSWORD = "Xb32y0x5";
+    private static final int WORLD = 393;
+    private static final Area AREA = MuleArea.COOKS_GUILD.getMuleArea();
+    private static final String PROXY_IP = "196.16.108.68";
+    private static final String PROXY_USER = "uC2TjZ";
+    private static final String PROXY_PASS = "wNuRc4";
+    private static final int PROXY_PORT = 8000;
+
     private int Gold;
     private int Gold2;
     private int gold3;
     private String status;
     private String user;
-    private GUI Gui;
     private boolean startScript;
-    private String Username;
-    private String Password;
-    private int muleWorld;
-    private Area muleArea;
     private boolean startGoldSet = false;
     private static final String MULE_FILE_PATH = Script.getDataDirectory() + "\\mule.txt";
     private boolean chain = false;
     private StopWatch runtime;
 
-    //public final String API_KEY = "JV5ML4DE4M9W8Z5KBE00322RDVNDGGMTMU1EH9226YCVGFUBE6J6OY1Q2NJ0RA8YAPKO70";
-    //private CheckInstances instanceChecker;
-
     @Override
     public void onStart() {
         LoginScreen ctx = new LoginScreen(this);
         ctx.setStopScriptOn(INVALID_CREDENTIALS);
-        ctx.setStopScriptOn(RUNESCAPE_UPDATE);
-        ctx.setStopScriptOn(RUNESCAPE_UPDATE_2);
         ctx.setDelayOnLoginLimit(true);
         //instanceChecker = new CheckInstances(this);
         runtime = StopWatch.start();
@@ -91,12 +98,14 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
         }
 
         removeBlockingEvent(LoginScreen.class);
-        Gui = new GUI(this);
 
-        Username = Gui.getUsername();
-        Password = Gui.getPassword();
-        muleWorld = Gui.getMuleWorld();
-        muleArea = Gui.getMuleArea().getMuleArea();
+        QuickStartArgs args = RSPeer.getQuickStartArgs();
+        if (args == null || args.getProxyIp() == null || !args.getProxyIp().equals(PROXY_IP)) {
+            chain = true;
+            this.setStopping(true);
+        } else {
+            setStartScript();
+        }
     }
 
     public void notify(LoginResponseEvent loginResponseEvent) {
@@ -111,18 +120,45 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
         }
     }
 
+    private QuickLaunch setupQuickLauncher() {
+        QuickLaunch qL = new QuickLaunch();
+        ArrayList<QuickLaunch.Client> clientList = new ArrayList<>();
+
+        QuickLaunch.Config config = qL.new Config(
+                true, true, 0, false, false);
+        QuickLaunch.Script script = qL.new Script(
+                "", "SS Mule", "", false);
+        QuickLaunch.Proxy proxy;
+            proxy = qL.new Proxy(
+                    "0", "9/29/2019", "DrScatman", "MuleProxy", PROXY_IP, PROXY_PORT, PROXY_USER, PROXY_PASS);
+
+        QuickLaunch.Client qLClient = qL.new Client(
+                USERNAME, PASSWORD, WORLD, proxy, script, config);
+
+        clientList.add(qLClient);
+        qL.setClients(clientList);
+        return qL;
+    }
+
+    private void killClient() throws IOException {
+        RSPeer.shutdown();
+        for (LaunchedClient client : BotManagement.getRunningClients()) {
+            if (client.getRunescapeEmail().equals(RSPeer.getGameAccount().getUsername())) {
+                client.kill();
+            }
+        }
+        System.exit(0);
+    }
+
     public void onStop() {
         if (chain) {
-            String launcher = "C:\\Users\\bllit\\OneDrive\\Desktop\\MuleLauncher.bat";
+            QuickLaunch quickLaunch = setupQuickLauncher();
 
             try {
-                Runtime.getRuntime().exec(
-                        "cmd /c " + launcher);
-
-                System.exit(0);
-            } catch (Exception e) {
-                System.out.println("HEY Buddy ! U r Doing Something Wrong ");
-                e.printStackTrace();
+                BotManagement.startClient(0, quickLaunch.get().toString(), 0, null, 1, 10);
+                killClient();
+            } catch (IOException e) {
+                Log.severe(e.getMessage());
             }
         }
     }
@@ -143,8 +179,8 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
                 Dialog.processContinue();
                 Time.sleep(1000);
             }
-            if (Game.isLoggedIn() && Players.getLocal() != null && !muleArea.contains(Players.getLocal())) {
-                Movement.walkToRandomized(muleArea.getCenter());
+            if (Game.isLoggedIn() && Players.getLocal() != null && !AREA.contains(Players.getLocal())) {
+                Movement.walkToRandomized(AREA.getCenter());
                 return 1000;
             }
 
@@ -160,8 +196,8 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
 
 
             if (status.contains("mule")) {
-                if (!Game.isLoggedIn() && Username != null && Password != null) {
-                    Login.enterCredentials(Username, Password);
+                if (!Game.isLoggedIn()) {
+                    Login.enterCredentials(USERNAME, PASSWORD);
                     Keyboard.pressEnter();
                     Time.sleep(200);
                     Keyboard.pressEnter();
@@ -177,10 +213,10 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
                     }
                 }
 
-                // Hop to muleWorld
-                if (Game.isLoggedIn() && Worlds.getCurrent() != muleWorld) {
-                    WorldHopper.hopTo(muleWorld);
-                    Time.sleepUntil(() -> Worlds.getCurrent() == muleWorld, 8000);
+                // Hop to WORLD
+                if (Game.isLoggedIn() && Worlds.getCurrent() != WORLD) {
+                    WorldHopper.hopTo(WORLD);
+                    Time.sleepUntil(() -> Worlds.getCurrent() == WORLD, 8000);
                 }
 
                 // Deposit all items
@@ -194,7 +230,7 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
                     Time.sleepUntil(Bank::isClosed, 5000);
                 }
 
-                if (Players.getNearest(user) != null && !Trade.isOpen() && muleArea.contains(Players.getLocal())) {
+                if (Players.getNearest(user) != null && !Trade.isOpen() && AREA.contains(Players.getLocal())) {
                     Players.getNearest(user).interact("Trade with");
                     Time.sleep(3000);
                 }
@@ -210,8 +246,8 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
 
 
             if (status.contains("needgold")) {
-                if (!Game.isLoggedIn() && Username != null && Password != null) {
-                    Login.enterCredentials(Username, Password);
+                if (!Game.isLoggedIn()) {
+                    Login.enterCredentials(USERNAME, PASSWORD);
                     Keyboard.pressEnter();
                     Time.sleep(200);
                     Keyboard.pressEnter();
@@ -325,7 +361,7 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
         }
         ChatMessageType type = Chatevent.getType();
 
-        if (type.equals(ChatMessageType.TRADE) && muleArea.contains(Players.getLocal())) {
+        if (type.equals(ChatMessageType.TRADE) && AREA.contains(Players.getLocal())) {
             user = Chatevent.getSource();
             // Do stuff
             Log.info(user + " is Trading");
