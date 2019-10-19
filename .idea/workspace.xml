@@ -6,24 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="394ccb17-7962-4774-999d-374aa665ddcf" name="Default Changelist" comment="9/24/2019 Connor pc setup">
-      <change afterPath="$PROJECT_DIR$/src/api/bot_management/BotManagement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/bot_management/BotManagementFileHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/bot_management/RsPeerDownloader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/bot_management/data/LaunchedClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/bot_management/data/Launcher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/bot_management/data/QuickLaunch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/bot_management/data/UserInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/component/ExClanChat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/component/ExGrandExchange.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/component/ExPriceCheck.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/component/ExSpells.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/component/ExWilderness.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/component/MTAShop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mule/GUI.java" beforeDir="false" />
-    </list>
+    <list default="true" id="394ccb17-7962-4774-999d-374aa665ddcf" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,10 +22,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Mule/Mule.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="106" column="29" selection-start-line="106" selection-start-column="29" selection-end-line="106" selection-end-column="29" />
+            <state relative-caret-position="381">
+              <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#12750#12751#0" expanded="true" />
                 <element signature="e#12789#12790#0" expanded="true" />
               </folding>
             </state>
@@ -52,7 +36,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/api/bot_management/BotManagementFileHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
+            <state relative-caret-position="500">
               <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -94,7 +78,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/api/component/ExGrandExchange.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
+            <state relative-caret-position="180">
               <caret line="20" selection-start-line="19" selection-end-line="20" />
             </state>
           </provider>
@@ -157,7 +141,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -199,6 +182,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -333,14 +317,21 @@
       <option name="project" value="LOCAL" />
       <updated>1571340134452</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Auto Launch">
+      <created>1571340379572</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1571340379572</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16471216" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1663113" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -383,7 +374,8 @@
     <MESSAGE value="Moved mule file" />
     <MESSAGE value="9/24/2019 Connor pc setup" />
     <MESSAGE value="startClient OSRS Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="startClient OSRS Update" />
+    <MESSAGE value="Auto Launch" />
+    <option name="LAST_COMMIT_MESSAGE" value="Auto Launch" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Mule/MuleThread.java" />
@@ -420,6 +412,29 @@
     <entry file="file://$PROJECT_DIR$/src/api/bot_management/data/Launcher.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mule/GUI.java" />
+    <entry file="file://$PROJECT_DIR$/src/Mule/Mule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#12750#12751#0" expanded="true" />
+            <element signature="e#12789#12790#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/bot_management/BotManagementFileHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/api/bot_management/BotManagement.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -440,36 +455,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/api/component/ExGrandExchange.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
+        <state relative-caret-position="180">
           <caret line="20" selection-start-line="19" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/bot_management/BotManagementFileHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mule/GUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="50" column="39" lean-forward="true" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mule/Mule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="106" column="29" selection-start-line="106" selection-start-column="29" selection-end-line="106" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#12789#12790#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
