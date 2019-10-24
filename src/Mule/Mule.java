@@ -4,14 +4,17 @@ import api.bot_management.BotManagement;
 import api.bot_management.data.LaunchedClient;
 import api.bot_management.data.QuickLaunch;
 import data.MuleArea;
+import data.PriceCheckService;
 import org.rspeer.QuickStartArgs;
 import org.rspeer.RSPeer;
 import org.rspeer.runetek.adapter.component.InterfaceComponent;
+import org.rspeer.runetek.adapter.scene.Pickable;
 import org.rspeer.runetek.api.Game;
 import org.rspeer.runetek.api.Login;
 import org.rspeer.runetek.api.Worlds;
 import org.rspeer.runetek.api.commons.StopWatch;
 import org.rspeer.runetek.api.commons.Time;
+import org.rspeer.runetek.api.commons.math.Random;
 import org.rspeer.runetek.api.component.*;
 import org.rspeer.runetek.api.component.Dialog;
 import org.rspeer.runetek.api.component.tab.Inventory;
@@ -19,6 +22,7 @@ import org.rspeer.runetek.api.input.Keyboard;
 import org.rspeer.runetek.api.input.menu.ActionOpcodes;
 import org.rspeer.runetek.api.movement.Movement;
 import org.rspeer.runetek.api.movement.position.Area;
+import org.rspeer.runetek.api.scene.Pickables;
 import org.rspeer.runetek.api.scene.Players;
 import org.rspeer.runetek.event.listeners.ChatMessageListener;
 import org.rspeer.runetek.event.listeners.LoginResponseListener;
@@ -33,10 +37,7 @@ import java.io.*;
 
 import java.awt.*;
 import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.NavigableMap;
-import java.util.TreeMap;
+import java.util.*;
 
 import java.io.IOException;
 
@@ -47,14 +48,14 @@ import static org.rspeer.runetek.event.types.LoginResponseEvent.Response.*;
 public class Mule extends Script implements ChatMessageListener, RenderListener, LoginResponseListener {
 
     public static final String API_KEY = "JV5ML4DE4M9W8Z5KBE00322RDVNDGGMTMU1EH9226YCVGFUBE6J6OY1Q2NJ0RA8YAPKO70";
-    private static final String USERNAME = "jkemllr115@gmail.com";
-    private static final String PASSWORD = "Xb115tn";
-    private static final int WORLD = 454;
-    private static final Area AREA = MuleArea.COOKS_GUILD.getMuleArea();
-    private static final String PROXY_IP = "196.16.108.68";
-    private static final String PROXY_USER = "uC2TjZ";
-    private static final String PROXY_PASS = "wNuRc4";
-    private static final int PROXY_PORT = 8000;
+    private static final String USERNAME = "Connorsickmiller+1@gmail.com";
+    private static final String PASSWORD = "Xb115tn115";
+    private static final String PROXY_IP = "66.146.232.97";
+    private static final String PROXY_USER = "";
+    private static final String PROXY_PASS = "";
+    private static final int PROXY_PORT = 1080;
+    private static final int WORLD = 393;
+    private static final Area AREA = MuleArea.GE_NEW.getMuleArea();
 
     private int Gold;
     private int Gold2;
@@ -129,8 +130,9 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
         QuickLaunch.Script script = qL.new Script(
                 "", "SS Mule", "", false);
         QuickLaunch.Proxy proxy;
-            proxy = qL.new Proxy(
-                    "0", "9/29/2019", "DrScatman", "MuleProxy", PROXY_IP, PROXY_PORT, PROXY_USER, PROXY_PASS);
+        proxy = qL.new Proxy(
+                "0", "9/29/2019", "DrScatman", "MuleProxy",
+                PROXY_IP, PROXY_PORT, PROXY_USER, PROXY_PASS);
 
         QuickLaunch.Client qLClient = qL.new Client(
                 USERNAME, PASSWORD, WORLD, proxy, script, config);
@@ -151,6 +153,8 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
     }
 
     public void onStop() {
+        PriceCheckService.dispose();
+
         if (chain) {
             QuickLaunch quickLaunch = setupQuickLauncher();
 
@@ -167,11 +171,8 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
 
     public int loop() {
         if (startScript) {
-            /*if (instanceChecker.isBadInstanceTime()) {
-                instanceChecker.checkBadInstances(10);
-            }*/
-
             inRead();
+
             if (status != null) {
                 status = status.trim();
             }
@@ -199,18 +200,11 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
                 if (!Game.isLoggedIn()) {
                     Login.enterCredentials(USERNAME, PASSWORD);
                     Keyboard.pressEnter();
-                    Time.sleep(200);
+                    Time.sleep(200, 500);
                     Keyboard.pressEnter();
-                    Time.sleep(200);
+                    Time.sleep(200, 500);
                     Keyboard.pressEnter();
-                }
-
-                // Click to play bug
-                if (Game.isLoggedIn()) {
-                    InterfaceComponent clickPlay = Interfaces.getComponent(413, 73);
-                    if (clickPlay != null && clickPlay.isVisible()) {
-                        clickPlay.interact(ActionOpcodes.INTERFACE_ACTION);
-                    }
+                    Time.sleep(200, 500);
                 }
 
                 // Hop to WORLD
@@ -219,73 +213,57 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
                     Time.sleepUntil(() -> Worlds.getCurrent() == WORLD, 8000);
                 }
 
-                // Deposit all items
-                if (Game.isLoggedIn() && Inventory.containsAnyExcept(995) && !Trade.isOpen()) {
+                if (Inventory.isFull() && Game.isLoggedIn()) {
+                    Log.fine("Banking");
                     while (!Bank.isOpen()) {
                         Bank.open();
+                        Time.sleep(2000, 8000);
                     }
-                    Bank.depositAllExcept(995);
-                    Time.sleepUntil(() -> Inventory.containsOnly(995), 5000);
+                    Bank.depositInventory();
+                    Time.sleepUntil(Inventory::isEmpty, 2000, 10_000);
+                    PriceCheckService.updateBankValue();
+                    PriceCheckService.updateInventoryValue();
                     Bank.close();
-                    Time.sleepUntil(Bank::isClosed, 5000);
+                    Time.sleepUntil(Bank::isClosed, 1000, 5000);
                 }
 
-                if (Players.getNearest(user) != null && !Trade.isOpen() && AREA.contains(Players.getLocal())) {
+                Pickable loot = getLoot();
+
+                if (loot == null && Players.getNearest(user) != null
+                        && !Trade.isOpen() && AREA.contains(Players.getLocal()) && !Inventory.isFull()) {
+
                     Players.getNearest(user).interact("Trade with");
-                    Time.sleep(3000);
+                    Time.sleep(3000, 5000);
                 }
                 if (Trade.hasOtherAccepted()) {
                     Trade.accept();
                     Log.info("Trade accepted");
                 }
+                if (loot != null && Game.isLoggedIn() && !Trade.isOpen() && !Inventory.isFull()) {
+                    Log.fine("Looting: " + loot.getName());
+                    loot.interact("Take");
+                }
             }
 
             if (status.contains("done")) {
-                Game.logout();
-            }
-
-
-            if (status.contains("needgold")) {
-                if (!Game.isLoggedIn()) {
-                    Login.enterCredentials(USERNAME, PASSWORD);
-                    Keyboard.pressEnter();
-                    Time.sleep(200);
-                    Keyboard.pressEnter();
-                    Time.sleep(200);
-                    Keyboard.pressEnter();
+                if (Game.isLoggedIn()) {
+                    PriceCheckService.updateInventoryValue();
+                    Game.logout();
                 }
-                if (Players.getNearest(user) != null && !Trade.isOpen()) {
-                    Players.getNearest(user).interact("Trade with");
-                    Time.sleep(3000);
-                }
-                if (Inventory.getFirst(995) != null) {
-                    if (!Trade.contains(true, 995)) {
-                        //int Coins = Inventory.getFirst(995).getStackSize();
-                        if (Trade.isOpen(false)) {
-                            // handle first trade window...
-                            Trade.offer("Coins", x -> x.contains("Offer-X"));
-                            Time.sleep(1000);
-                            if (EnterInput.isOpen()) {
-                                EnterInput.initiate(4000000);
-                                Time.sleep(1000);
-                            }
-                            if (Trade.contains(true, 995)) {
-                                Trade.accept();
-                                Time.sleep(700);
-                            }
-                        } else if (Trade.isOpen(true)) {
-                            // handle second trade window...
-                            Trade.accept();
-                            Time.sleep(700);
-                        }
-
-                    }
-                }
+                user = null;
             }
         }
 
+        return Random.low(500, 900);
+    }
 
-        return 500;
+    private Pickable getLoot() {
+        return null;/*Pickables.newQuery()
+                .within(AREA)
+                .results()
+                .sortByDistance()
+                .sort(Comparator.comparingInt(l -> PriceCheckService.getPrice(l.getId()).getSellAverage() * l.getStackSize()))
+                .last();*/
     }
 
     private static final NavigableMap<Long, String> suffixes = new TreeMap<>();
@@ -341,11 +319,14 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
 
     public void notify(RenderEvent renderEvent) {
         Graphics g = renderEvent.getSource();
-        g.drawString("Runtime: " + runtime.toElapsedString(), 300, 330);
-        g.drawString("Gp Received: " + format(gold3), 300, 350);
-        g.drawString("Gp /h: " + format((long) runtime.getHourlyRate(gold3)), 300, 370);
-        g.drawString("Total Gp: " + format(Gold), 300, 390);
-
+        g.setColor(Color.magenta);
+        g.drawString("Runtime:  " + runtime.toElapsedString(), 300, 330);
+        g.drawString("Gp Received:  " + format(gold3), 300, 350);
+        g.drawString("Gp / h:  " + format((long) runtime.getHourlyRate(gold3)), 300, 370);
+        g.drawString("Total Gp:  " + format(Gold), 300, 390);
+        g.drawString("Bank Value:  " + format(PriceCheckService.getBankValue()), 300, 410);
+        g.drawString("Inventory Value:  " + format(PriceCheckService.getInventoryValue()), 300, 430);
+        g.drawString("Total Value: " + format(PriceCheckService.getTotalValue()), 300, 450);
     }
 
     void setStartScript() {
@@ -353,13 +334,15 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
     }
 
     public void notify(ChatMessageEvent Chatevent) {
+        ChatMessageType type = Chatevent.getType();
+        if (type.equals(ChatMessageType.PUBLIC) || type.equals(ChatMessageType.PRIVATE_RECEIVED))
+            return;
 
         if (Chatevent.getMessage().contains("Accepted Trade")) {
             if (Inventory.getFirst(995) != null) {
                 Gold2 = Inventory.getFirst(995).getStackSize();
             }
         }
-        ChatMessageType type = Chatevent.getType();
 
         if (type.equals(ChatMessageType.TRADE) && AREA.contains(Players.getLocal())) {
             user = Chatevent.getSource();
