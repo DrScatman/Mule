@@ -7,11 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="394ccb17-7962-4774-999d-374aa665ddcf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/data/PriceCheckService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mule/Mule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mule/Mule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/CheckInstances.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/MuleArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/MuleArea.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,6 +32,8 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554204500134" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
@@ -193,7 +191,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571498583898</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Looting capability">
+      <created>1571955968224</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1571955968224</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -201,7 +206,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -224,7 +231,8 @@
     <MESSAGE value="startClient OSRS Update" />
     <MESSAGE value="Auto Launch" />
     <MESSAGE value="10/19/2019 Banned --&gt; New Mule" />
-    <option name="LAST_COMMIT_MESSAGE" value="10/19/2019 Banned --&gt; New Mule" />
+    <MESSAGE value="Looting capability" />
+    <option name="LAST_COMMIT_MESSAGE" value="Looting capability" />
   </component>
   <component name="masterDetails">
     <states>
