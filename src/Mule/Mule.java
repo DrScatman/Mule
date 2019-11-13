@@ -34,6 +34,7 @@ import org.rspeer.script.ScriptMeta;
 import org.rspeer.script.events.LoginScreen;
 import org.rspeer.ui.Log;
 
+import javax.swing.*;
 import java.io.*;
 
 import java.awt.*;
@@ -48,7 +49,7 @@ import static org.rspeer.runetek.event.types.LoginResponseEvent.Response.*;
 
 public class Mule extends Script implements ChatMessageListener, RenderListener, LoginResponseListener {
 
-    public static final String API_KEY = "JV5ML4DE4M9W8Z5KBE00322RDVNDGGMTMU1EH9226YCVGFUBE6J6OY1Q2NJ0RA8YAPKO70";
+    public static String API_KEY;
     private static final String USERNAME = "Connorsickmiller+1@gmail.com";
     private static final String PASSWORD = "Xb115tn115";
     private static final String PROXY_IP = "66.146.232.97";
@@ -71,6 +72,10 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
 
     @Override
     public void onStart() {
+        API_KEY = JOptionPane.showInputDialog("Enter a path");
+        if (API_KEY.equals("115")) {
+            API_KEY = "JV5ML4DE4M9W8Z5KBE00322RDVNDGGMTMU1EH9226YCVGFUBE6J6OY1Q2NJ0RA8YAPKO70";
+        }
         LoginScreen ctx = new LoginScreen(this);
         ctx.setStopScriptOn(INVALID_CREDENTIALS);
         ctx.setDelayOnLoginLimit(true);
