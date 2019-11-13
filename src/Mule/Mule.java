@@ -9,6 +9,7 @@ import org.rspeer.QuickStartArgs;
 import org.rspeer.RSPeer;
 import org.rspeer.runetek.adapter.component.InterfaceComponent;
 import org.rspeer.runetek.adapter.scene.Pickable;
+import org.rspeer.runetek.adapter.scene.Player;
 import org.rspeer.runetek.api.Game;
 import org.rspeer.runetek.api.Login;
 import org.rspeer.runetek.api.Worlds;
@@ -228,11 +229,12 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
                 }
 
                 Pickable loot = getLoot();
+                Player bot = Players.getNearest(user);
 
-                if (loot == null && Players.getNearest(user) != null
+                if (loot == null && bot != null && AREA.contains(bot)
                         && !Trade.isOpen() && AREA.contains(Players.getLocal()) && !Inventory.isFull()) {
 
-                    Players.getNearest(user).interact("Trade with");
+                   bot.interact("Trade with");
                     Time.sleep(3000, 5000);
                 }
                 if (Trade.hasOtherAccepted()) {
