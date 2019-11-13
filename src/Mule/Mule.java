@@ -50,8 +50,8 @@ import static org.rspeer.runetek.event.types.LoginResponseEvent.Response.*;
 public class Mule extends Script implements ChatMessageListener, RenderListener, LoginResponseListener {
 
     public static String API_KEY;
-    private static final String USERNAME = "Connorsickmiller+1@gmail.com";
-    private static final String PASSWORD = "Xb115tn115";
+    private static final String USERNAME = "hpsbllitzer+115@gmail.com";
+    private static final String PASSWORD = "123plmmlp";
     private static final String PROXY_IP = "66.146.232.97";
     private static final String PROXY_USER = "";
     private static final String PROXY_PASS = "";
