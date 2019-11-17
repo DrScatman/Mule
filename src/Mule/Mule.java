@@ -72,11 +72,14 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
 
     @Override
     public void onStart() {
-        API_KEY = JOptionPane.showInputDialog("Enter a path");
+        API_KEY = JOptionPane.showInputDialog("Enter API Key:");
         if (API_KEY.equals("115")) {
             API_KEY = "JV5ML4DE4M9W8Z5KBE00322RDVNDGGMTMU1EH9226YCVGFUBE6J6OY1Q2NJ0RA8YAPKO70";
         }
-        LoginScreen ctx = new LoginScreen(this);
+        if (API_KEY.equals("server")) {
+            API_KEY = "S1Z8S8QHPE0LST3E2H07T8YABM63L17AW738NN61LAT0CT9NQG38JLDUDY7FCX5YG0ZVZ4";
+        }
+            LoginScreen ctx = new LoginScreen(this);
         ctx.setStopScriptOn(INVALID_CREDENTIALS);
         ctx.setDelayOnLoginLimit(true);
         //instanceChecker = new CheckInstances(this);
@@ -219,25 +222,9 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
                     Time.sleepUntil(() -> Worlds.getCurrent() == WORLD, 8000);
                 }
 
-                if (Inventory.isFull() && Game.isLoggedIn()) {
-                    Log.fine("Banking");
-                    while (!Bank.isOpen()) {
-                        Bank.open();
-                        Time.sleep(2000, 8000);
-                    }
-                    Bank.depositInventory();
-                    Time.sleepUntil(Inventory::isEmpty, 2000, 10_000);
-                    PriceCheckService.updateBankValue();
-                    PriceCheckService.updateInventoryValue();
-                    Bank.close();
-                    Time.sleepUntil(Bank::isClosed, 1000, 5000);
-                }
-
-                Pickable loot = getLoot();
                 Player bot = Players.getNearest(user);
 
-                if (loot == null && bot != null && AREA.contains(bot)
-                        && !Trade.isOpen() && AREA.contains(Players.getLocal()) && !Inventory.isFull()) {
+                if (bot != null && !Trade.isOpen() && AREA.contains(Players.getLocal())) {
 
                    bot.interact("Trade with");
                     Time.sleep(3000, 5000);
@@ -245,10 +232,6 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
                 if (Trade.hasOtherAccepted()) {
                     Trade.accept();
                     Log.info("Trade accepted");
-                }
-                if (loot != null && Game.isLoggedIn() && !Trade.isOpen() && !Inventory.isFull()) {
-                    Log.fine("Looting: " + loot.getName());
-                    loot.interact("Take");
                 }
             }
 
@@ -262,15 +245,6 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
         }
 
         return Random.low(500, 900);
-    }
-
-    private Pickable getLoot() {
-        return null;/*Pickables.newQuery()
-                .within(AREA)
-                .results()
-                .sortByDistance()
-                .sort(Comparator.comparingInt(l -> PriceCheckService.getPrice(l.getId()).getSellAverage() * l.getStackSize()))
-                .last();*/
     }
 
     private static final NavigableMap<Long, String> suffixes = new TreeMap<>();
@@ -326,14 +300,10 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
 
     public void notify(RenderEvent renderEvent) {
         Graphics g = renderEvent.getSource();
-        g.setColor(Color.magenta);
         g.drawString("Runtime:  " + runtime.toElapsedString(), 300, 330);
-        g.drawString("Gp Received:  " + format(gold3), 300, 350);
-        g.drawString("Gp / h:  " + format((long) runtime.getHourlyRate(gold3)), 300, 370);
-        g.drawString("Total Gp:  " + format(Gold), 300, 390);
-        g.drawString("Bank Value:  " + format(PriceCheckService.getBankValue()), 300, 410);
-        g.drawString("Inventory Value:  " + format(PriceCheckService.getInventoryValue()), 300, 430);
-        g.drawString("Total Value: " + format(PriceCheckService.getTotalValue()), 300, 450);
+        g.drawString("GP Received:  " + format(gold3), 300, 350);
+        g.drawString("GP / H:  " + format((long) runtime.getHourlyRate(gold3)), 300, 370);
+        g.drawString("Total GP:  " + format(Gold), 300, 390);
     }
 
     void setStartScript() {
