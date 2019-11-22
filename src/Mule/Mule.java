@@ -19,10 +19,12 @@ import org.rspeer.runetek.api.commons.math.Random;
 import org.rspeer.runetek.api.component.*;
 import org.rspeer.runetek.api.component.Dialog;
 import org.rspeer.runetek.api.component.tab.Inventory;
+import org.rspeer.runetek.api.component.tab.Tab;
 import org.rspeer.runetek.api.input.Keyboard;
 import org.rspeer.runetek.api.input.menu.ActionOpcodes;
 import org.rspeer.runetek.api.movement.Movement;
 import org.rspeer.runetek.api.movement.position.Area;
+import org.rspeer.runetek.api.movement.position.Position;
 import org.rspeer.runetek.api.scene.Pickables;
 import org.rspeer.runetek.api.scene.Players;
 import org.rspeer.runetek.event.listeners.ChatMessageListener;
@@ -56,8 +58,8 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
     private static final String PROXY_USER = "";
     private static final String PROXY_PASS = "";
     private static final int PROXY_PORT = 1080;
-    private static final int WORLD = 393;
-    private static final Area AREA = MuleArea.GE_NEW.getMuleArea();
+    private static final int WORLD = 454;
+    private static final Position POSITION = new Position(3202, 3388, 1);
 
     private int Gold;
     private int Gold2;
@@ -189,8 +191,8 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
                 Dialog.processContinue();
                 Time.sleep(1000);
             }
-            if (Game.isLoggedIn() && Players.getLocal() != null && !AREA.contains(Players.getLocal())) {
-                Movement.walkToRandomized(AREA.getCenter());
+            if (Game.isLoggedIn() && Players.getLocal() != null && POSITION.distance() > 3) {
+                Movement.walkTo(POSITION);
                 return 1000;
             }
 
@@ -224,7 +226,7 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
 
                 Player bot = Players.getNearest(user);
 
-                if (bot != null && !Trade.isOpen() && AREA.contains(Players.getLocal())) {
+                if (bot != null && !Trade.isOpen() && POSITION.distance() < 3) {
 
                    bot.interact("Trade with");
                     Time.sleep(3000, 5000);
@@ -321,7 +323,7 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
             }
         }
 
-        if (type.equals(ChatMessageType.TRADE) && AREA.contains(Players.getLocal())) {
+        if (type.equals(ChatMessageType.TRADE) && POSITION.distance() < 3) {
             user = Chatevent.getSource();
             // Do stuff
             Log.info(user + " is Trading");
