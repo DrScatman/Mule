@@ -54,12 +54,12 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
     public static String API_KEY;
     private static final String USERNAME = "hpsbllitzer+115@gmail.com";
     private static final String PASSWORD = "123plmmlp";
-    private static final String PROXY_IP = "66.146.232.97";
+    private static final String PROXY_IP = "";
     private static final String PROXY_USER = "";
     private static final String PROXY_PASS = "";
     private static final int PROXY_PORT = 1080;
     private static final int WORLD = 454;
-    private static final Position POSITION = new Position(3202, 3388, 1);
+    private static final Position POSITION = new Position(3205, 3389, 0);
 
     private int Gold;
     private int Gold2;
@@ -112,7 +112,8 @@ public class Mule extends Script implements ChatMessageListener, RenderListener,
         removeBlockingEvent(LoginScreen.class);
 
         QuickStartArgs args = RSPeer.getQuickStartArgs();
-        if (args == null || args.getProxyIp() == null || !args.getProxyIp().equals(PROXY_IP)) {
+        if (PROXY_IP != null && !PROXY_IP.isEmpty() &&
+                (args == null || args.getProxyIp() == null || !args.getProxyIp().equals(PROXY_IP))) {
             chain = true;
             this.setStopping(true);
         } else {
